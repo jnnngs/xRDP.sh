@@ -14,5 +14,5 @@ or
 
 bash <(curl -s https://xRDP.sh/xrdp.sh -s -l)
 
-##Credits
+## Credits
 https://c-nergy.be/blog/?p=16817
