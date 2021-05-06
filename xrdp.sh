@@ -51,6 +51,49 @@
 # Function 1  - check xserver-xorg-core package....
 #---------------------------------------------------#
 
+function setup_environment() {
+    ### define colors ###
+    lightred=$'\033[1;31m'  # light red
+    red=$'\033[0;31m'  # red
+    lightgreen=$'\033[1;32m'  # light green
+    green=$'\033[0;32m'  # green
+    lightblue=$'\033[1;34m'  # light blue
+    blue=$'\033[0;34m'  # blue
+    lightpurple=$'\033[1;35m'  # light purple
+    purple=$'\033[0;35m'  # purple
+    lightcyan=$'\033[1;36m'  # light cyan
+    cyan=$'\033[0;36m'  # cyan
+    lightgray=$'\033[0;37m'  # light gray
+    white=$'\033[1;37m'  # white
+    brown=$'\033[0;33m'  # brown
+    yellow=$'\033[1;33m'  # yellow
+    darkgray=$'\033[1;30m'  # dark gray
+    black=$'\033[0;30m'  # black
+    nocolor=$'\e[0m' # no color
+
+    echo -e -n "${lightred}"
+    echo -e -n "${red}"
+    echo -e -n "${lightgreen}"
+    echo -e -n "${green}"
+    echo -e -n "${lightblue}"
+    echo -e -n "${blue}"
+    echo -e -n "${lightpurple}"
+    echo -e -n "${purple}"
+    echo -e -n "${lightcyan}"
+    echo -e -n "${cyan}"
+    echo -e -n "${lightgray}"
+    echo -e -n "${white}"
+    echo -e -n "${brown}"
+    echo -e -n "${yellow}"
+    echo -e -n "${darkgray}"
+    echo -e -n "${black}"
+    echo -e -n "${nocolor}"
+    clear
+
+    # Set Vars
+    LOGFILE='/var/log/wireguardSH.log'
+}
+
 check_hwe()
 {
 Release=$(lsb_release -sr)
@@ -565,16 +608,18 @@ enable_service
 
 #--Automating Script versioning 
 ScriptVer="1.2.3"
-echo
-/bin/echo -e "\e[1;36m   !---------------------------------------------------------------!\e[0m"
-/bin/echo -e "\e[1;36m   !   xrdp-installer-$ScriptVer Script                                 !\e[0m"
-/bin/echo -e "\e[1;36m   !   Support 18.04/20.04/20.10/21.04                             !\e[0m"
-/bin/echo -e "\e[1;36m   !   Written by Griffon - Nov 2020 - www.c-nergy.be              !\e[0m"
-/bin/echo -e "\e[1;36m   !                                                               !\e[0m"
-/bin/echo -e "\e[1;36m   !   For Help and Syntax, type ./xrdp-installer-$ScriptVer.sh -h      !\e[0m"
-/bin/echo -e "\e[1;36m   !                                                               !\e[0m"
-/bin/echo -e "\e[1;36m   !---------------------------------------------------------------!\e[0m"
-echo
+setup_environment
+clear
+echo -e -n "${white}"
+echo "
+░█░█░▒█▀▀▄░▒█▀▀▄░▒█▀▀█░░░░░░█▀▀░█░░░░░
+░▄▀▄░▒█▄▄▀░▒█░▒█░▒█▄▄█░▄▄░░░▀▀▄░█▀▀█░░
+░▀░▀░▒█░▒█░▒█▄▄█░▒█░░░░▀▀░░░▀▀▀░▀░░▀░░
+
+V1.0
+"
+
+echo -e -n "${nocolor}"
 #----------------------------------------------------------#
 # Step 0 -Detecting if Parameters passed to script ....    #
 #----------------------------------------------------------#
@@ -584,19 +629,21 @@ do
     #Help Menu Requested
     if [ "$arg" == "--help" ] || [ "$arg" == "-h" ]
     then
+                echo -e -n "${green}"
                 echo "Usage Syntax and Examples"
                 echo
                 echo " --custom or -c           custom xRDP install (compilation from sources)"
-        echo " --loginscreen or -l      customize xRDP login screen"
+                echo " --loginscreen or -l      customize xRDP login screen"
                 echo " --remove or -r           removing xRDP packages"
                 echo " --sound or -s            enable sound redirection in xRDP"
+                #echo
+                #echo "example                                                      "
+                #echo     
+                #echo " ./xrdp-installer-$ScriptVer.sh -c -s  custom install with sound redirection"
+                #echo " ./xrdp-installer-$ScriptVer.sh -l     standard install with custom login screen"
+                #echo " ./xrdp-installer-$ScriptVer.sh        standard install no additional features"
                 echo
-                echo "example                                                      "
-                echo     
-                echo " ./xrdp-installer-$ScriptVer.sh -c -s  custom install with sound redirection"
-                echo " ./xrdp-installer-$ScriptVer.sh -l     standard install with custom login screen"
-                echo " ./xrdp-installer-$ScriptVer.sh        standard install no additional features"
-                echo
+                echo -e -n "${nocolor}"
                 exit
     fi
 
@@ -625,11 +672,14 @@ done
 #-------------------------------------------------------------------------------#
 
 if [[ $EUID -ne 0 ]]; then
+    echo -e -n "${green}"
     /bin/echo -e "\e[1;36m   !-------------------------------------------------------------!\e[0m"
     /bin/echo -e "\e[1;36m   !  Standard user detected....Proceeding....                   !\e[0m"
     /bin/echo -e "\e[1;36m   !-------------------------------------------------------------!\e[0m"
+    echo -e -n "${nocolor}"
 else
     echo
+    echo -e -n "${red}"
     /bin/echo -e "\e[1;31m   !-------------------------------------------------------------!\e[0m"
     /bin/echo -e "\e[1;31m   !  Script launched with sudo command. Script will not run...  !\e[0m"
     /bin/echo -e "\e[1;31m   !  Run script a standard user account (no sudo). When needed  !\e[0m"
@@ -637,6 +687,7 @@ else
     /bin/echo -e "\e[1;31m   !                                                             !\e[0m"
     /bin/echo -e "\e[1;31m   !  Exiting Script - No Install Performed !!!                  !\e[0m"
     /bin/echo -e "\e[1;31m   !-------------------------------------------------------------!\e[0m"
+    echo -e -n "${nocolor}"
     echo
     #sh_credits
     exit
@@ -649,6 +700,7 @@ fi
 version=$(lsb_release -sd)
 codename=$(lsb_release -sc)
 echo
+echo -e -n "${green}"
 /bin/echo -e "\e[1;33m   |-| Detecting Ubuntu version        \e[0m"
 
 if  [[ "$version" = *"Ubuntu 18.04"* ]];
@@ -668,6 +720,7 @@ then
     /bin/echo -e "\e[1;32m       |-| Ubuntu Version : $version\e[0m"
     echo
 else
+    echo -e -n "${red}"
    /bin/echo -e "\e[1;31m  !--------------------------------------------------------------!\e[0m"
    /bin/echo -e "\e[1;31m  ! Your system is not running a supported version               !\e[0m"
    /bin/echo -e "\e[1;31m  ! The script has been tested only on the following versions    !\e[0m"
@@ -677,7 +730,7 @@ else
    echo
    exit
 fi
-
+echo -e -n "${nocolor}"
 #-----------------------------------------------------------------------
 #Step 2 - checking for additional Settings - xorg-xserver-core version
 #----------------------------------------------------------------------
@@ -701,27 +754,33 @@ fi
 if [ -f /etc/xrdp/xrdp-installer-check.log ]
 then
 echo
+echo -e -n "${green}"
 /bin/echo -e "\e[1;36m   !----------------------------------------------------------------!\e[0m"
 /bin/echo -e "\e[1;36m   ! INFO : xrdp-install script ran at least once on this computer. !\e[0m" 
 /bin/echo -e "\e[1;36m   !----------------------------------------------------------------!\e[0m"
+echo -e -n "${nocolor}"
 fi
 
 if [ "$adv" = "yes" ];
 then
        echo
+       echo -e -n "${green}"
         /bin/echo -e "\e[1;36m   !-------------------------------------------------------------!\e[0m"
         /bin/echo -e "\e[1;36m   !  Custom Installation Option Selected.....                   !\e[0m"
         /bin/echo -e "\e[1;36m   !-------------------------------------------------------------!\e[0m"
         echo
+        echo -e -n "${nocolor}"
         install_custom
         install_tweak
         install_common     
 else
         echo
+        echo -e -n "${green}"
         /bin/echo -e "\e[1;36m   !-------------------------------------------------------------!\e[0m"
         /bin/echo -e "\e[1;36m   !  Standard Installation Mode Selected - U18.04 and later     !\e[0m"
         /bin/echo -e "\e[1;36m   !-------------------------------------------------------------!\e[0m"
         echo
+        echo -e -n "${nocolor}"
         install_xrdp
         install_tweak
         install_common
@@ -731,16 +790,16 @@ fi  #end if Adv option
 #- Check for Additional Options selected 
 #----------------------------------------------------------------------------------------
 
-if [ "$fixSound" = "yes" ]; 
-then 
-        enable_sound      
-fi
+#if [ "$fixSound" = "yes" ]; 
+#then 
+    enable_sound      
+#fi
 
-if [ "$fixlogin" = "yes" ]; 
-then
+#if [ "$fixlogin" = "yes" ]; 
+#then
     echo
     custom_login
-fi
+#fi
 
 #-----------------------------------------------------------------------
 # Create Check file to see if script has run at least once...
@@ -752,4 +811,6 @@ sudo touch /etc/xrdp/xrdp-installer-check.log
 #---------------------------------------------------------------------------------------
 #- show Credits and finishing script
 #--------------------------------------------------------------------------------------- 
+echo -e -n "${green}"
 sh_credits 
+echo -e -n "${nocolor}"
