@@ -1,6 +1,6 @@
 <span>login as: xRDP.sh</span>
 <span>xRDP.sh@127.0.0.1's password:</span>
-<div>Welcome to harden v1.0 automated installation script</div>
+<div>Welcome to xRDP v1.0 automated installation script</div>
 <div> * Open Source:        https://github.com/jnnngs/xRDP.sh</div>
 <p><span style="font-family: 'Lucida Console'; line-height: 18px; font-size: 18px; display: inline-block;">░▀▄▀▒█▀▄░█▀▄▒█▀▄░░░▄▀▀░█▄█<br />░█▒█░█▀▄▒█▄▀░█▀▒░▄▒▄██▒█▒█<br /></span></p>
 <div>v1.0</div>
