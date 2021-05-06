@@ -1,4 +1,4 @@
-<p><span style="font-family: 'Lucida Console'; line-height: 14px; font-size: 14px; display: inline-block;">░▀▄▀▒█▀▄░█▀▄▒█▀▄░░░▄▀▀░█▄█<br />░█▒█░█▀▄▒█▄▀░█▀▒░▄▒▄██▒█▒█<br /></span></p>
+<p><span style="font-family: 'Lucida Console'; line-height: 18px; font-size: 18px; display: inline-block;">░▀▄▀▒█▀▄░█▀▄▒█▀▄░░░▄▀▀░█▄█<br />░█▒█░█▀▄▒█▄▀░█▀▒░▄▒▄██▒█▒█<br /></span></p>
 
 Welcome to xRDP Script Installation
 
