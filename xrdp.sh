@@ -394,11 +394,11 @@ echo $Dwnload
 cd $Dwnload
 #chek if file exists if not - download it.... 
 
-if [ -f "griffon_logo_xrdp.bmp" ]
+if [ -f "xRDP.bmp" ]
 then
 echo "custom logo file already present..."
 else
-wget http://www.c-nergy.be/downloads/griffon_logo_xrdp.bmp
+wget https://github.com/jnnngs/xRDP.sh/raw/main/xRDP.bmp
 fi
 
 #Check if script has run once...
@@ -414,11 +414,11 @@ sudo cp /etc/xrdp/xrdp.ini /etc/xrdp/xrdp.ini.griffon
 if [ -d "/usr/local/share/xrdp" ] 
 then
     echo
-    sudo cp griffon_logo_xrdp.bmp /usr/local/share/xrdp
-    sudo sed -i 's/ls_logo_filename=/ls_logo_filename=\/usr\/local\/share\/xrdp\/griffon_logo_xrdp.bmp/g' /etc/xrdp/xrdp.ini
+    sudo cp xRDP.bmp /usr/local/share/xrdp
+    sudo sed -i 's/ls_logo_filename=/ls_logo_filename=\/usr\/local\/share\/xrdp\/xRDP.bmp/g' /etc/xrdp/xrdp.ini
 else
-    sudo cp griffon_logo_xrdp.bmp /usr/share/xrdp
-    sudo sed -i 's/ls_logo_filename=/ls_logo_filename=\/usr\/share\/xrdp\/griffon_logo_xrdp.bmp/g' /etc/xrdp/xrdp.ini
+    sudo cp xRDP.bmp /usr/share/xrdp
+    sudo sed -i 's/ls_logo_filename=/ls_logo_filename=\/usr\/share\/xrdp\/xRDP.bmp/g' /etc/xrdp/xrdp.ini
 fi
 
 sudo sed -i 's/blue=009cb5/blue=dedede/' /etc/xrdp/xrdp.ini
@@ -508,9 +508,9 @@ then
 fi
 
 #Remove custom xrdp logo file
-if [ -f "$Dwnload/griffon_logo_xrdp.bmp" ]
+if [ -f "$Dwnload/xRDP.bmp" ]
 then
-    sudo rm -f  "$Dwnload/griffon_logo_xrdp.bmp"
+    sudo rm -f  "$Dwnload/xRDP.bmp"
 fi
 sudo systemctl daemon-reload
 }
