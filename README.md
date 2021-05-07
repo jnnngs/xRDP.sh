@@ -8,7 +8,7 @@ xRDP.sh is a single file zero config shell script to be run to install and confi
 - Zero Install
 - Single file shell script
 
-bash <(wget -O - https://xRDP.sh/xrdp.sh)
+bash <(wget -q -O - https://xRDP.sh/xrdp.sh)
 
 or
 
