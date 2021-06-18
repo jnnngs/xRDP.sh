@@ -437,6 +437,7 @@ sudo make
 cd /tmp/pulseaudio-$pulsever/pulseaudio-module-xrdp/src/.libs
 sudo install -t "/var/lib/xrdp-pulseaudio-installer" -D -m 644 *.so
 sudo install -t "/usr/lib/pulse-$pulsever/modules" -D -m 644 *.so
+pulseaudio -k
 echo
 }
 
