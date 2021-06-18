@@ -159,12 +159,12 @@ export DEBIAN_PRIORITY=critical
 sudo -E apt-get -qy update 
 sudo -E apt-get -qy -o "Dpkg::Options::=--force-confdef" -o "Dpkg::Options::=--force-confold" upgrade 
 sudo -E apt-get -qy autoclean 
-echo "nameserver 8.8.8.8" | sudo tee /etc/resolv.conf > /dev/null &
-sudo locale-gen en_GB en_GB.UTF-8 
-sudo update-locale LC_ALL=en_GB.UTF-8 LANG=en_GB.UTF
+echo "nameserver 8.8.8.8" | sudo tee /etc/resolv.conf > /dev/null
 # FIX
 #brave-browser & GitHubDesktop
 sudo apt-get -qy install xserver-xorg-core ubuntu-desktop libx11-dev libxfixes-dev libssl-dev libpam0g-dev libtool libjpeg-dev flex bison gettext autoconf libxml-parser-perl libfuse-dev xsltproc libxrandr-dev python3-libxml2 nasm fuse pkg-config git intltool checkinstall
+sudo locale-gen en_GB en_GB.UTF-8 
+sudo update-locale LC_ALL=en_GB.UTF-8 LANG=en_GB.UTF
 sudo apt-get -qy install apt-transport-https curl 
 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg 
 echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list 
