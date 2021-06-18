@@ -163,9 +163,9 @@ echo "nameserver 8.8.8.8" | sudo tee /etc/resolv.conf > /dev/null &
 sudo locale-gen en_GB en_GB.UTF-8 
 sudo update-locale LC_ALL=en_GB.UTF-8 LANG=en_GB.UTF
 # FIX
-#GitHubDesktop
-sudo apt-get -y install xserver-xorg-core ubuntu-desktop libx11-dev libxfixes-dev libssl-dev libpam0g-dev libtool libjpeg-dev flex bison gettext autoconf libxml-parser-perl libfuse-dev xsltproc libxrandr-dev python3-libxml2 nasm fuse pkg-config git intltool checkinstall
-sudo apt install apt-transport-https curl 
+#brave-browser & GitHubDesktop
+sudo apt-get -qy install xserver-xorg-core ubuntu-desktop libx11-dev libxfixes-dev libssl-dev libpam0g-dev libtool libjpeg-dev flex bison gettext autoconf libxml-parser-perl libfuse-dev xsltproc libxrandr-dev python3-libxml2 nasm fuse pkg-config git intltool checkinstall
+sudo apt-get -qy install apt-transport-https curl 
 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg 
 echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list 
 sudo apt update 
