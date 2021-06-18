@@ -153,7 +153,28 @@ Release=$(lsb_release -sr)
 /bin/echo -e "\e[1;33m   !---------------------------------------------!\e[0m"
 echo
 timedatectl set-timezone Europe/London
+# FIX
+export DEBIAN_FRONTEND=noninteractive
+export DEBIAN_PRIORITY=critical
+sudo -E apt-get -qy update 
+sudo -E apt-get -qy -o "Dpkg::Options::=--force-confdef" -o "Dpkg::Options::=--force-confold" upgrade 
+sudo -E apt-get -qy autoclean 
+echo "nameserver 8.8.8.8" | sudo tee /etc/resolv.conf > /dev/null &
+sudo locale-gen en_GB en_GB.UTF-8 
+sudo update-locale LC_ALL=en_GB.UTF-8 LANG=en_GB.UTF
+# FIX
+#GitHubDesktop
 sudo apt-get -y install xserver-xorg-core ubuntu-desktop libx11-dev libxfixes-dev libssl-dev libpam0g-dev libtool libjpeg-dev flex bison gettext autoconf libxml-parser-perl libfuse-dev xsltproc libxrandr-dev python3-libxml2 nasm fuse pkg-config git intltool checkinstall
+sudo apt install apt-transport-https curl 
+sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg 
+echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list 
+sudo apt update 
+sudo apt install brave-browser gdebi-core  
+sudo snap install --classic code 
+sudo wget https://github.com/shiftkey/desktop/releases/download/release-2.6.3-linux1/GitHubDesktop-linux-2.6.3-linux1.deb 
+sudo gdebi GitHubDesktop-linux-2.6.3-linux1.deb
+#GitHubDesktop
+
 echo
 if [ $HWE = "yes" ];
 then
