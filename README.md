@@ -1,3 +1,4 @@
+[![CI](https://github.com/jnnngs/xRDP.sh/actions/workflows/blank.yml/badge.svg)](https://github.com/jnnngs/xRDP.sh/actions/workflows/blank.yml)
 <p><span style='font-family: "Lucida Console";line-height: 14px;font-size: 14px;display: inline-block;'>░█░█░▒█▀▀▄░▒█▀▀▄░▒█▀▀█░░░░░░█▀▀░█░░░░░<br>░▄▀▄░▒█▄▄▀░▒█░▒█░▒█▄▄█░▄▄░░░▀▀▄░█▀▀█░░<br>░▀░▀░▒█░▒█░▒█▄▄█░▒█░░░░▀▀░░░▀▀▀░▀░░▀░░<br></span></p>
 
 Welcome to xRDP Script Installation
